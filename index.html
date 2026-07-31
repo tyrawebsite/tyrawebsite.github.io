@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My OneSignal Test Site</title>
+
+  <!-- OneSignal Web SDK -->
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function (OneSignal) {
+      await OneSignal.init({
+        appId: "YOUR_ONESIGNAL_APP_ID", // <-- replace with your real App ID from the OneSignal dashboard
+      });
+    });
+  </script>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 640px;
+      margin: 80px auto;
+      padding: 0 24px;
+      color: #1f2a44;
+      line-height: 1.5;
+    }
+    h1 { color: #1f2a44; }
+    button {
+      background: #4E50D1;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 16px;
+    }
+    button:hover { background: #3d3fb0; }
+    code {
+      background: #f2f2f2;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>My OneSignal Test Site</h1>
+  <p>This page is wired up to receive web push notifications through OneSignal.</p>
+  <p>Click the button below to subscribe, then send yourself a test notification from the OneSignal dashboard.</p>
+
+  <button onclick="OneSignal.Slidedown.promptPush()">Subscribe to notifications</button>
+
+  <p style="margin-top:40px; font-size: 14px; color: #595959;">
+    Setup checklist: replace <code>YOUR_ONESIGNAL_APP_ID</code> above with your real App ID,
+    upload <code>OneSignalSDKWorker.js</code> to the root of this repo, then push both files.
+  </p>
+</body>
+</html>
